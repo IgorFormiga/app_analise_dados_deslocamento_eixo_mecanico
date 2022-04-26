@@ -1,0 +1,182 @@
+<GraficoRigidezMancalTraseiro>:
+    on_enter: root.Atribuir()
+    FloatLayout:
+        LabelConfig:
+            pos_hint: {'center_x': 0.5, 'top': 1.}
+            text: 'Gráfico do deslocamento total na ponta do eixo-árvore em função da Rigidez do mancal traseiro R2'
+
+        LabelConfig:
+            pos_hint: {'x': 0.05, 'y': 0.75}
+            text: 'Digite os parâmetros:'
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.65}
+            text: '[ref=Fy1: ]Fy1: [/ref]'
+            on_ref_press: root.Explicacao('Fy1', 'Componente da força de corte na direção Y [N]')
+        MyInput:
+            id: valor_Fy1
+            size_hint: None, None
+            width: 110
+            height:30
+            hint_text: 'Fy1 [N]'
+            pos_hint: {'x': 0.2, 'y': 0.71}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.55}
+            text: '[ref=Fy2: ]Fy2: [/ref]'
+            on_ref_press: root.Explicacao('Fy2', 'Componente da força de acionamento na direção Y [N]')
+        MyInput:
+            id: valor_Fy2
+            size_hint: None, None
+            width: 110
+            height:30
+            hint_text: 'Fy2 [N]'
+            pos_hint: {'x': 0.2, 'y': 0.61}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.45}
+            text: '[ref=Myz: ]Myz: [/ref]'
+            on_ref_press: root.Explicacao('Myz', 'Momento devido a componente Fy1, e aplicado na extremidade do eixo [N.mm]')
+        MyInput:
+            id: valor_Myz
+            size_hint: None, None
+            width: 110
+            height:30
+            hint_text: 'Myz [N/mm]'
+            pos_hint: {'x': 0.2, 'y': 0.45+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.35}
+            text: '[ref=A: ]A: [/ref]'
+            on_ref_press: root.Explicacao('A', 'Comprimento em balanço [mm]')
+        MyInput:
+            id: valor_A
+            size_hint: None, None
+            width: 110
+            height:30
+            hint_text: 'A [mm]'
+            pos_hint: {'x': 0.2, 'y': 0.35+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.25}
+            text: '[ref=D1: ]D1: [/ref]'
+            on_ref_press: root.Explicacao('D1', 'Distância da componente da força de acionamento ao apoio secundário(traseiro)')
+        MyInput:
+            id: valor_D1
+            size_hint: None, None
+            width: 110
+            height:30
+            hint_text: 'D1 [mm]'
+            pos_hint: {'x': 0.2, 'y': 0.25+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.08}
+            text: 'Tipo do Eixo: '
+        CheckBoxTipo:
+            #pos_hint: {'center_x': 0.78, 'y': 0.41}
+            pos: 120, 0
+            id: valor_Tipo
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.15}
+            text: '[ref=E: ]E: [/ref]'
+            on_ref_press: root.Explicacao('E', 'Módulo de elasticidade do material do eixo [N/mm²]')
+        MyInput:
+            id: valor_E
+            size_hint: None, None
+            width: 110
+            height:30
+            hint_text: 'E [N/mm²]'
+            pos_hint: {'x': 0.2, 'y': 0.15+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.52, 'y': 0.65}
+            text: '[ref=R2: ]R2: [/ref]'
+            on_ref_press: root.Explicacao('R2', 'Variação da Rigidez do mancai traseiro dentro de um intervalo [N/mm]')
+        LabelConfig:
+            pos_hint: {'center_x': 0.58, 'y': 0.6}
+            text: 'Valor Inicial: '
+        MyInput:
+            id: valor_R2i
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'R2i [N/mm]'
+            pos_hint: {'center_x': 0.71, 'y': 0.6+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.58, 'y': 0.55}
+            text: 'Valor Final: '
+        MyInput:
+            id: valor_R2f
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'R2f [N/mm]'
+            pos_hint: {'center_x': 0.71, 'y': 0.55+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.58, 'y': 0.5}
+            text: 'Incremento: '
+        MyInput:
+            id: valor_R2inc
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'R2i[N/mm]'
+            pos_hint: {'center_x': 0.71, 'y': 0.5+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.5, 'y': 0.40}
+            text: '[ref=L: ]L: [/ref]'
+            on_ref_press: root.Explicacao('L', 'Distância entre mancais [mm]')
+        MyInput:
+            id: valor_L
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'L [mm]'
+            pos_hint: {'center_x': 0.58, 'y': 0.40+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.52, 'y': 0.30}
+            text: '[ref=Valores de R1: ]Valores de R1: [/ref]'
+            on_ref_press: root.Explicacao('R1', 'Valores de Rigidez do mancai dianteiro [N/mm]')
+        LabelConfig:
+            pos_hint: {'center_x': 0.64, 'y': 0.25}
+            text: 'Primiero valor de R1: '
+        MyInput:
+            id: valor_R11
+            size_hint: None, None
+            width: 95
+            height:30
+            hint_text: 'R1 [N/mm]'
+            pos_hint: {'center_x': 0.81, 'y': 0.25+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.64, 'y': 0.2}
+            text: 'Segundo valor de R1: '
+        MyInput:
+            id: valor_R12
+            size_hint: None, None
+            width: 95
+            height:30
+            hint_text: 'R1 [N/mm]'
+            pos_hint: {'center_x': 0.81, 'y': 0.2+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.54, 'y': 0.1}
+            text: 'Diâmetro: '
+        MyInput:
+            id: valor_d
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'd [mm]'
+            pos_hint: {'center_x': 0.65, 'y': 0.1+0.06}
+
+        BotaoVoltar
+            pos_hint: {'center_x': 0.9, 'y': 0.05}
+            on_release: app.get_running_app().root.current = 'menu'
+
+        BotaoAvancar
+            pos_hint: {'center_x': 0.76, 'y': 0.05}
+            on_release:
+                root.avancar()

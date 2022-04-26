@@ -1,0 +1,21 @@
+<ResultadoGraficoRigidezMancalDianteiro>:
+    figura: figura
+    on_enter: root.Calcular()
+    FloatLayout:
+        LabelConfig:
+            text: 'Gráfico do deslocamento total na ponta do eixo-árvore em função da Rigidez do mancal dianteiro R1'
+            pos_hint: {'center_x': 0.5, 'top': 1.}
+
+        BotaoVoltar:
+            pos_hint: {'center_x': 0.9, 'y': 0.05}
+            on_release:
+                app.get_running_app().root.current = 'GraficoRigidezMancalDianteiro'
+                root.Limpar()
+
+    BoxLayout:
+        id: figura
+        orientation: 'vertical'
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        size_hint: (None, None)
+        height: 400
+        width: 650

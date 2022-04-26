@@ -1,0 +1,290 @@
+<CalculoTotalFadiga>:
+    on_enter: root.Atribuir()
+    FloatLayout:
+        LabelConfig:
+            pos_hint: {'center_x': 0.5, 'top': 1.}
+            text: 'Cálculo do deslocamento total na ponta do eixo-árvore com o(s) diâmetro(s) cálculado(s) por fadiga'
+
+        LabelConfig:
+            pos_hint: {'x': 0.05, 'y': 0.75}
+            text: 'Digite os parâmetros:'
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.70}
+            text: '[ref=Fy1: ]Fy1: [/ref]'
+            on_ref_press: root.Explicacao('Fy1', 'Componente da força de corte na direção Y [N]')
+        MyInput:
+            markup: True
+            id: valor_Fy1
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'Fy1 [N]'
+            pos_hint: {'x': 0.2, 'y': 0.7+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.65}
+            text: '[ref=Fy2: ]Fy2: [/ref]'
+            on_ref_press: root.Explicacao('Fy2', 'Componente da força de acionamento na direção Y [N]')
+        MyInput:
+            id: valor_Fy2
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'Fy2 [N]'
+            pos_hint: {'x': 0.2, 'y': 0.65+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.6}
+            text: '[ref=Myz: ]Myz: [/ref]'
+            on_ref_press: root.Explicacao('Myz', 'Momento devido a componente Fy1, e aplicado na extremidade do eixo [N.mm]')
+        MyInput:
+            id: valor_Myz
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'Myz[N/mm]'
+            pos_hint: {'x': 0.2, 'y': 0.6+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.55}
+            text: '[ref=A: ]A: [/ref]'
+            on_ref_press: root.Explicacao('A', 'Comprimento em balanço [mm]')
+        MyInput:
+            id: valor_A
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'A[mm]'
+            pos_hint: {'x': 0.2, 'y': 0.55+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.5}
+            text: '[ref=D1: ]D1: [/ref]'
+            on_ref_press: root.Explicacao('D1', 'Distância da componente da força de acionamento ao apoio secundário(traseiro)')
+        MyInput:
+            id: valor_D1
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'D1[mm]'
+            pos_hint: {'x': 0.2, 'y': 0.5+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.45}
+            text: '[ref=L: ]L: [/ref]'
+            on_ref_press: root.Explicacao('L', 'Distância entre mancais [mm]')
+        MyInput:
+            id: valor_L
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'L[mm]'
+            pos_hint: {'x': 0.2, 'y': 0.45+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.4}
+            text: '[ref=E: ]E: [/ref]'
+            on_ref_press: root.Explicacao('E', 'Lista de Módulos de elasticidade do material do eixo [N/mm²]')
+        MyInputList:
+            id: valor_E_fad
+            size_hint: None, None
+            width: 160
+            height:30
+            font_size: 15
+            hint_text: 'E1,E2,...,En [N/mm²]'
+            pos_hint: {'x': 0.2, 'y': 0.4+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.35}
+            text: '[ref=R1: ]R1: [/ref]'
+            on_ref_press: root.Explicacao('R1', 'Rigidez do mancai dianteiro [N/mm]')
+        MyInput:
+            id: valor_R1
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'R1[N/mm]'
+            pos_hint: {'x': 0.2, 'y': 0.35+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.3}
+            text: '[ref=R2: ]R2: [/ref]'
+            on_ref_press: root.Explicacao('R2', 'Rigidez do mancai traseiro [N/mm]')
+        MyInput:
+            id: valor_R2
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'R2[N/mm]'
+            pos_hint: {'x': 0.2, 'y': 0.3+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.25}
+            text: '[ref=T: ]T: [/ref]'
+            on_ref_press: root.Explicacao('T', 'Torque [Nmm]')
+        MyInput:
+            id: valor_T
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'T[N/m]'
+            pos_hint: {'x': 0.2, 'y': 0.25+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.2}
+            text: '[ref=n: ]n: [/ref]'
+            on_ref_press: root.Explicacao('n', 'Fator de segurança')
+        MyInput:
+            id: valor_n
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'n'
+            pos_hint: {'x': 0.2, 'y': 0.2+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.15}
+            text: '[ref=Sy: ]Sy: [/ref]'
+            on_ref_press: root.Explicacao('Sy', 'Resistência ao Escoamento por tração')
+        MyInputList:
+            id: valor_Sy
+            size_hint: None, None
+            width: 160
+            height:30
+            font_size: 14
+            hint_text: 'Sy1,Sy2,...Syn [N/mm²]'
+            pos_hint: {'x': 0.2, 'y': 0.15+0.06}
+
+        LabelConfig:
+            pos_hint: {'x': 0.1, 'y': 0.1}
+            text: '[ref=Sut: ]Sut: [/ref]'
+            on_ref_press: root.Explicacao('Sut', 'Resistência à tração mínima do material')
+        MyInputList:
+            id: valor_Sut
+            size_hint: None, None
+            width: 160
+            height:30
+            font_size: 13
+            hint_text: 'Sut1,Sut2,...,Sutn [N/mm²]'
+            pos_hint: {'x': 0.2, 'y': 0.1+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.65, 'y': 0.7}
+            text: 'Fatores de modificação: '
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.65}
+            text: '[ref=ka: ]ka: [/ref]'
+            on_ref_press: root.Explicacao('ka', 'Fator de modificação de condição de superfície ')
+        MyInput:
+            id: valor_ka
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'ka'
+            pos_hint: {'center_x': 0.78, 'y': 0.65+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.6}
+            text: '[ref=kb: ]kb: [/ref]'
+            on_ref_press: root.Explicacao('kb', 'Fator de modificação de tamanho ')
+        MyInput:
+            id: valor_kb
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'kb'
+            pos_hint: {'center_x': 0.78, 'y': 0.6+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.55}
+            text: '[ref=kc: ]kc: [/ref]'
+            on_ref_press: root.Explicacao('kc', 'Fator de modificação de carga')
+        MyInput:
+            id: valor_kc
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'kc'
+            pos_hint: {'center_x': 0.78, 'y': 0.55+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.5}
+            text: '[ref=kd: ]kd: [/ref]'
+            on_ref_press: root.Explicacao('kd', 'Fator de modificação de temperatura')
+        MyInput:
+            id: valor_kd
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'kd'
+            pos_hint: {'center_x': 0.78, 'y': 0.5+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.45}
+            text: '[ref=ke: ]ke: [/ref]'
+            on_ref_press: root.Explicacao('ke', 'Fator de confiabilidade')
+        MyInput:
+            id: valor_ke
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'ke'
+            pos_hint: {'center_x': 0.78, 'y': 0.45+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.4}
+            text: '[ref=kf: ]kf: [/ref]'
+            on_ref_press: root.Explicacao('kf', 'Fator de modificação por efeitos variados')
+        MyInput:
+            id: valor_kf
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'kf'
+            pos_hint: {'center_x': 0.78, 'y': 0.4+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.35}
+            text: 'Fatore de concentração de tensão de fadiga: '
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.3}
+            text: '[ref=Kf: ]Kf: [/ref]'
+            on_ref_press: root.Explicacao('Kf', 'Fatore de concentração de tensão de fadiga para flexão')
+        MyInput:
+            id: valor_KF
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'Kf'
+            pos_hint: {'center_x': 0.78, 'y': 0.3+0.06}
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.25}
+            text: '[ref=Kfs: ]Kfs: [/ref]'
+            on_ref_press: root.Explicacao('Kfs', 'Fator de concentração de tensão em fadiga para torção')
+        MyInput:
+            id: valor_KFS
+            size_hint: None, None
+            width: 90
+            height:30
+            hint_text: 'Kfs'
+            pos_hint: {'center_x': 0.78, 'y': 0.25+0.06}
+
+        LabelConfig:
+            pos_hint: {'center_x': 0.5, 'y': 0.2}
+            text: 'Tipo do Eixo: '
+        CheckBoxTipo:
+            #pos_hint: {'x': 0.78, 'y': 0.35+0.06}
+            pos: 380, 70
+            id: valor_Tipo
+        LabelConfig:
+            pos_hint: {'center_x': 0.7, 'y': 0.2}
+            text: 'Criterio: '
+        CheckBoxCriterio:
+            pos: 600, 70
+            id: valor_Criterio
+
+
+        BotaoVoltar
+            pos_hint: {'center_x': 0.9, 'y': 0.05}
+            on_release: app.get_running_app().root.current = 'menu'
+
+        BotaoAvancar
+            pos_hint: {'center_x': 0.76, 'y': 0.05}
+            on_release:
+                root.avancar()

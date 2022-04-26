@@ -1,0 +1,35 @@
+<ResultadoCalculoTotalFadiga>:
+#    figura: figura
+    on_enter: root.Calcular()
+    FloatLayout:
+        LabelConfig:
+            text: 'Cálculo do deslocamento total na ponta do eixo-árvore com o(s) diâmetro(s) cálculado(s) por fadiga'
+            pos_hint: {'center_x': 0.5, 'top': 1.}
+
+        BotaoVoltar:
+            pos_hint: {'center_x': 0.9, 'y': 0.05}
+            on_release:
+                app.get_running_app().root.current = 'CalculoTotalFadiga'
+                root.Limpar()
+
+        Button:
+            text: 'Exibir Gráfico'
+            size_hint: None, None
+            width: 120
+            height: 40
+            pos_hint: {'center_x': 0.75, 'y': 0.05}
+            on_release:
+                root.Limpar()
+                root.Calcular()
+
+
+
+#        BoxLayout:
+#            id: figura
+#            orientation: 'vertical'
+#            pos_hint: {'x': .3, 'y': 0.05}
+#            size_hint: (None, None)
+#            height: 275
+#            width: 350
+#            padding: 10
+

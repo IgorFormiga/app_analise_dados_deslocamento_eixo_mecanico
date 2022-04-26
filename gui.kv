@@ -1,0 +1,182 @@
+# Screen de Inportção dos dados
+#:include InterfaceGrafica/ScreenInportacaoDados/Screen_Setters_Calculo_Importacao_Diametros/CalculoTotalImportacaoDiametros.kv
+#:include InterfaceGrafica/ScreenInportacaoDados/Screen_Setters_Grafico_Distancia_Entre_Mancais/GraficoDistanciaEntreMancais.kv
+#:include InterfaceGrafica/ScreenInportacaoDados/Screen_Setters_Grafico_Rigidez_Mancal_D/GraficoRigidezMancalDianteiro.kv
+#:include InterfaceGrafica/ScreenInportacaoDados/Screen_Setters_Grafico_Rigidez_Mancal_T/GraficoRigidezMancalTraseiro.kv
+#:include InterfaceGrafica/ScreenInportacaoDados/Screen_Setters_Calculo_Total_Fadiga/CalculoTotalFadiga.kv
+# Screen de visualização dos dados
+#:include InterfaceGrafica/ScreenResultado/Screen_Getters_Calculo_Importacao_Diametros/ResultadoCalculoTotalImportacaoDiametros.kv
+#:include InterfaceGrafica/ScreenResultado/Screen_Getters_Calculo_Total_Fadiga/ResultadoCalculoTotalFadiga.kv
+#:include InterfaceGrafica/ScreenResultado/Screen_Getters_Grafico_Distancia_Entre_Mancais/ResultadoGraficoDistanciaEntreMancais.kv
+#:include InterfaceGrafica/ScreenResultado/Screen_Getters_Grafico_Rigidez_Mancal_D/ResultadoGraficoRigidezMancalDianteiro.kv
+#:include InterfaceGrafica/ScreenResultado/Screen_Getters_Grafico_Rigidez_Mancal_T/ResultadoGraficoRigidezMancalTraseiro.kv
+
+<Gerenciador>:
+    # Definindo a primeira tela
+    Menu:
+        name: 'menu'
+    CalculoTotalImportacaoDiametros:
+        name: 'CalculoTotalImportacaoDiametros'
+    CalculoTotalFadiga:
+        name: 'CalculoTotalFadiga'
+    GraficoDistanciaEntreMancais:
+        name: 'GraficoDistanciaEntreMancais'
+    GraficoRigidezMancalDianteiro:
+        name: 'GraficoRigidezMancalDianteiro'
+    GraficoRigidezMancalTraseiro:
+        name: 'GraficoRigidezMancalTraseiro'
+
+
+    # Definindo as novas telas de cálculo:
+    ResultadoCalculoTotalImportacaoDiametros
+        name: 'ResultadoCalculoTotalImportacaoDiametros'
+    ResultadoCalculoTotalFadiga
+        name: 'ResultadoCalculoTotalFadiga'
+    ResultadoGraficoDistanciaEntreMancais
+        name: 'ResultadoGraficoDistanciaEntreMancais'
+    ResultadoGraficoRigidezMancalDianteiro
+        name: 'ResultadoGraficoRigidezMancalDianteiro'
+    ResultadoGraficoRigidezMancalTraseiro
+        name: 'ResultadoGraficoRigidezMancalTraseiro'
+
+
+<menu>:
+#    canvas.before:
+#        Color:
+#            rgba: (158/255, 156/255, 226/255, 1)
+#        Rectangle:
+#            pos: self.pos
+#            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        # margem do BoxLayout:
+        padding: 20
+        # Espaço entre os widgets:
+        spacing: 5
+        Button:
+            # CalculoTotalImportacaoDiametros
+            text: '1-Cálculo do deslocamento total na ponta do eixo-árvore com importação dos diâmetros'
+            on_release: app.root.current = 'CalculoTotalImportacaoDiametros'
+        Button:
+            # CalculoTotalFadiga
+            text: '2-Cálculo do deslocamento total na ponta do eixo-árvore com os com o(s) diâmetro(s) calculado(s) por fadiga'
+            on_release: app.root.current = 'CalculoTotalFadiga'
+        Button:
+            # GraficoDistanciaEntreMancais
+            text: '3 - Gráfico do deslocamento total na ponta do eixo-árvore em função da variação da distância entre mancais'
+            on_release: app.root.current = 'GraficoDistanciaEntreMancais'
+        Button:
+            # GraficoRigidezMancalDianteiro
+            text: '4-Gráfico do deslocamento total na ponta do eixo-árvore em função da Rigidez do mancal dianteiro R1'
+            on_release: app.root.current = 'GraficoRigidezMancalDianteiro'
+        Button:
+            # GraficoRigidezMancalTraseiro
+            text: '5-Gráfico do deslocamento total na ponta do eixo-árvore em função da Rigidez do mancal traseiro R2'
+            on_release: app.root.current = 'GraficoRigidezMancalTraseiro'
+        Button:
+            # VerModificar
+            #text: '6 - Ver/Modificar variáveis'
+            #on_release: app.root.current = 'VerModificar'
+            text: 'Exit'
+            on_release: root.confirmacao()
+
+# Classes dinâmicas:
+
+<LabelConfig@Label>:
+    markup: True
+    size_hint: None, None
+    bold: True
+    color: 1, 1, 1, 1
+
+
+<BotaoVoltar@Button>:
+    text: 'Voltar'
+    size_hint: None, None
+    width: 100
+    height: 40
+    # O método get_running_app() retorna o app que tá rodando para acessar o gerenciador
+    # o método current altera a tela (slide) atual para outro
+    #on_release: app.get_running_app().root.current = 'menu'
+
+
+
+<BotaoAvancar@Button>:
+    text: 'Avançar'
+    size_hint: None, None
+    width: 100
+    height: 40
+
+
+<MyInput>:
+    size_hint: None, None
+    foreground_color: (0,0,0,1) if root.validated else (1,0,0,1)
+
+<MyInputList>:
+    size_hint: None, None
+    foreground_color: (0,0,0,1) if root.validatedlist else (1,0,0,1)
+
+
+<CheckBoxTipo>:
+    BoxLayout:
+        #pos_hint: self.parent
+        pos: root.pos
+        GridLayout:
+            cols: 2
+            spacing: 0, -30
+            Label:
+                text: 'Maciço'
+            CheckBox:
+                id: M
+                group: 'TipoEixo'
+                text: 'Maciço'
+                on_active: root.text = 'Maciço'
+
+
+            Label:
+                text: 'Vazado'
+                #on_active: root.checkbox_click(self, self.active)
+            CheckBox:
+                id: V
+                group: 'TipoEixo'
+                text: 'Vazado'
+                on_active: root.text = 'Vazado'
+
+
+
+<CheckBoxCriterio>:
+    BoxLayout:
+        #pos_hint: {'center_x': 0.78, 'y': 0.35+0.06}
+#        pos: 500, 150
+        pos: root.pos
+        GridLayout:
+            cols: 2
+            spacing: 50, -30
+            Label:
+                markup: True
+                text: '[ref=Gerber]Gerber[/ref]'
+                on_ref_press: root.Explicacao('Gerber', 'Critério de Gerber. Este critério foi apresentado por mostrar um bom ajuste com os \nresultados experimentais, à época coletados por Gerber. O critério adota uma curva \n quadrática, passando por σN e σR, simétrica em relação ao eixo vertical. ')
+            CheckBox:
+                group: 'criterio'
+                on_active: root.text = 'Gerber'
+
+            Label:
+                markup: True
+                text: '[ref=ASME-Elíptico]ASME-Elíptico[/ref]'
+                on_ref_press: root.Explicacao('ASME-Elíptico', 'A norma da ANSI/ASME para o Projeto de Eixos de Transmissão, B106.1M -1985, \napresenta um enfoque simplificado para o projeto de eixos. O procedimento da ASME \npressupões que o carregamento é constituído de flexão alternada e torque fixo, logo, as  \ncomponentes de flexão média e torque alternado são nulas.')
+            CheckBox:
+                group: 'criterio'
+                on_active: root.text = 'ASME-Elíptico'
+
+
+<Mensagem>:
+    background_image: ''
+    background_color: (1, 0, 0, 1)
+    border: (1, 1, 1, 1)
+    size_hint: (None, None)
+    size: (180, 60)
+    Label:
+        id: label
+        text: 'Valor incorreto!'
+
+

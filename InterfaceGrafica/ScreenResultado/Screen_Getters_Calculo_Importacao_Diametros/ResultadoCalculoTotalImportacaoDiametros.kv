@@ -1,0 +1,64 @@
+<ResultadoCalculoTotalImportacaoDiametros>:
+    on_enter: root.Calcular()
+    FloatLayout:
+        id: local_tabela
+        LabelConfig:
+            text: 'Resultado Cálculo do deslocamento total na ponta do eixo-árvore com importação dos diâmetros'
+            pos_hint: {'center_x': 0.5, 'top': 1.}
+
+        BotaoVoltar:
+            pos_hint: {'center_x': 0.9, 'y': 0.05}
+            on_release:
+                app.get_running_app().root.current = 'CalculoTotalImportacaoDiametros'
+                root.Limpar()
+
+            #on_press: root.Limpar()
+#        ScrollView:
+#            id: local_tabela
+#            pos_hint: {'x': 0.05, 'y': 0.15}
+#            size_hint: (0.9, 0.70)
+#            canvas.before:
+#                Color:
+#                    rgba: 1, 1, 1, 1
+#                Rectangle:
+#                    pos: self.pos
+#                    size: self.size
+
+        #BoxLayout:
+            #id: local_tabela
+#        CriacaoTabela:
+#            pos_hint: {'x': 0.05, 'y': 0.15}
+#            size_hint: (0.9, 0.70)
+#            canvas.before:
+#                Color:
+#                    rgba: 1, 1, 1, 1
+#                Rectangle:
+#                    pos: self.pos
+#                    size: self.size
+
+
+
+#<CriacaoTabela>:
+#    ScrollView:
+#        id: criacaotabela
+#        orientation: 'vertical'
+#        size_hint_y: None
+#        # Irá utilizar o tamanho mínimo de altura para que englobe os widgets
+#        height: self.minimum_height
+##        CriacaoTabela:
+##            pos_hint: {'x': 0.05, 'y': 0.15}
+##            size_hint: (0.9, 0.70)
+##            canvas.before:
+##                Color:
+##                    rgba: 1, 1, 1, 1
+##                Rectangle:
+##                    pos: self.pos
+##                    size: self.size
+#
+#
+#<Linha>:
+#    BoxLayout:
+#        id: box
+#        orientation: 'horizontal'
+#        size_hint_y: None
+#        height: 50
